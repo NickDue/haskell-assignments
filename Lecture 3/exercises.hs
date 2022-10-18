@@ -1,35 +1,39 @@
--- Opgave 2.1
+-- Opgave 3.1
+pyt :: Int -> [(Int, Int, Int)]
+pyt k = [(x,y,z) | x <- [1..k], y <- [1..k], z <- [1..k], x^2+y^2 == z^2, x <= y, y < z]
 
-twice :: (a -> a) -> a -> a
-twice f x = f (f (x))
--- it uses parametric polymorhpism since we do not declare a data type.
+-- Opgave 3.2
+sevens :: Int -> [Int]
+sevens k = [x | x <- [1..k-1], x `mod` 7 == 0]
 
--- Opgave 2.2
-dingo :: (a,a) -> [a]
-dingo (x,y) = [x,y]
--- it uses parametric polymorhpism since we do not declare a data type.
+-- Opgave 3.3
+headsup :: [Int] -> Bool
+--headsup x = if head x == head (tail x) then True else False
+headsup (x:xs) = x == head(xs)
+-- The type is wrong, it needs to be of type Int and not of class Num
 
--- Opgave 2.3
--- bighead :: Ord a => [a] -> Int
+-- Opgave 3.4
+plonk = \x -> (\y -> (\z -> x + y + z))
+-- :t plonk = Num a => a -> a -> a -> a
 
--- Opgave 2.4
--- You cannot be sure that two functions are equal. HINT: EQ_tm is undecideable and un-recognizable
+-- Opgave 3.5
+thishasnoname :: (Ord a1, Eq a2) => a2 -> a2 -> (a1, a1) -> a1
+thishasnoname x y (z, h) | x == y = min z h
+                         | otherwise = max z h
 
--- Ekstra Opgaver
 
+-- Ekstra opgaver
 -- Opgave a
-mango :: Num a => a -> a -> a -> a
-mango x y z = x * y + z - 42
--- mango 14 :: Num a => a -> a -> a
+flop :: [(b,a)] -> [(a,b)]
+flop l = [(y, x) | (x, y) <- l]
+
 
 -- Opgave b
-bingo :: a -> a
-bingo a = a
+dupli :: [a] -> [a]
+dupli l = concat [[x,x] | x <- l]
 
---Opgave c
-thesame :: Eq a => [(a, a)] -> [(a,a)]
-thesame xs = [(x,y) | (x,y) <- xs, x == y]
+-- Opgave c
+factors :: Int -> [Int]
+factors n = [x | x <- [1..n-1], n `mod` x == 0]
 
--- Opgave d
-[(+), (*), (+), (-)] :: Num a => [a -> a -> a] -- A list of binary operators
-[(+), (*), (+), (-), (++)] :: Num [a] => [[a] -> [a] -> [a]]
+--isperfect :: Int -> Bool
