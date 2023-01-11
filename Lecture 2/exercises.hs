@@ -31,5 +31,5 @@ thesame :: Eq a => [(a, a)] -> [(a,a)]
 thesame xs = [(x,y) | (x,y) <- xs, x == y]
 
 -- Opgave d
-[(+), (*), (+), (-)] :: Num a => [a -> a -> a] -- A list of binary operators
-[(+), (*), (+), (-), (++)] :: Num [a] => [[a] -> [a] -> [a]]
+--[(+), (*), (+), (-)] :: Num a => [a -> a -> a] -- A list of binary operators
+--[(+), (*), (+), (-), (++)] :: Num [a] => [[a] -> [a] -> [a]]
